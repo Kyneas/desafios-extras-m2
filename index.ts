@@ -1,5 +1,5 @@
 import * as minimist from "minimist";
-import { ProducController, ProductCollection } from "./controllers";
+import { ProducController } from "./controllers";
 
 function parsear(argv) {
   const resultado = minimist(argv);
@@ -8,12 +8,8 @@ function parsear(argv) {
 
 function main() {
   const controller = new ProducController();
-  const productos = new ProductCollection();
-  productos.getAll().then(() => {
-    const params = parsear(process.argv.slice(2));
-    const result = controller.processOptions(params);
-    console.log(result);
-  });
+  const params = parsear(process.argv.slice(2));
+  const resultado = controller.processOptions(params);
+  resultado.then((resultado) => console.log(resultado));
 }
-
 main();

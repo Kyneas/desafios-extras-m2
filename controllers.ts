@@ -6,8 +6,10 @@ class ProducController {
     this.productos = new ProductCollection();
   }
   processOptions(option) {
-    if (option.search) {
-      return this.productos.getById(option.search);
+    if (option.search == Number) {
+      const encontrado = this.productos.getById(option.search);
+      console.log(option.search);
+      return encontrado;
     } else {
       return this.productos.getAll();
     }
